@@ -34,16 +34,21 @@ namespace Gra_idź_na_ryby
 
         public static string PluralValueName(Values value, int count)
         {
-            switch (count)
+            if (count == 0)
             {
-                case 0:
-                    return names0[(int)value - 1];
-                case 1:
-                    return names1[(int)value - 1];
-                case 2:
-                    return names2AndMore[(int)value - 1];
-                default:
-                    throw new Exception("Count can be only 1, 2 or 0");
+                return names0[(int)value - 1];
+            }
+            else if (count == 1)
+            {
+                return names1[(int)value - 1];
+            }
+            else if (count > 1 && count < 5)
+            {
+                return names2AndMore[(int)value - 1];
+            }
+            else
+            {
+                throw new Exception("Count can be only 0-4");
             }
         }
     }

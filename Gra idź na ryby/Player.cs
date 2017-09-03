@@ -32,5 +32,12 @@ namespace Gra_idź_na_ryby
         {
             return cards.Peek(random.Next(cards.Count)).Value;
         }
+
+        public Deck DoYouHaveAny(Values value)
+        {
+            Deck result = cards.PullOutValues(value);
+            textBox.Text += string.Format("{0} ma {1} {2}", Name, result.Count, Card.PluralValueName(value, result.Count));
+            return result;
+        }
     }
 }
