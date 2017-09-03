@@ -27,5 +27,24 @@ namespace Gra_idź_na_ryby
         {
             return Name;
         }
+
+        private static string[] names0 = {"asów", "dwójek", "trójek", "czwórek", "piątek", "szóstek", "siódemek", "ósemek", "dziewiątek", "dziesiątek", "waletów", "dam", "króli"};
+        private static string[] names1 = { "asa", "dwójkę", "czwórkę", "piątkę", "szóstkę", "siódemkę", "ósemkę", "dziewiątkę", "dziesiątkę", "waleta", "damę", "króla" };
+        private static string[] names2AndMore = { "asy", "dwójki", "trójki", "czwórki", "piątki", "szóstki", "siódemki", "ósemki", "dziewiątki", "dziesiątki", "walety", "damy", "króle"};
+
+        public static string PluralValueName(Values value, int count)
+        {
+            switch (count)
+            {
+                case 0:
+                    return names0[(int)value - 1];
+                case 1:
+                    return names1[(int)value - 1];
+                case 2:
+                    return names2AndMore[(int)value - 1];
+                default:
+                    throw new Exception("Count can be only 1, 2 or 0");
+            }
+        }
     }
 }

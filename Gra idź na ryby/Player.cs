@@ -27,5 +27,10 @@ namespace Gra_idź_na_ryby
         {
             return cards.PoolBooks();
         }
+
+        public Values RandomValue()
+        {
+            return cards.Peek(random.Next(cards.Count)).Value;
+        }
     }
 }
