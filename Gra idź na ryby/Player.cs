@@ -14,6 +14,10 @@ namespace Gra_idź_na_ryby
         private Deck cards = new Deck(new Card[0]);
         private TextBox textBox;
 
+        public int CardCount => cards.Count;
+        public IEnumerable<string> CardNames => cards.GetCardNames();
+        
+
         public Player(string name, Random random, TextBox textBox)
         {
             Name = name;
@@ -22,6 +26,10 @@ namespace Gra_idź_na_ryby
 
             textBox.Text += Name + " dołączył do gry" + Environment.NewLine;
         }
+
+        public void TakeCard(Card card) => cards.Add(card);
+        public Card Peek(int index = 0) => cards.Peek(index);
+        public void SortHand() => cards.SortByValue();
 
         public IEnumerable<Values> PulOutBooks()
         {
