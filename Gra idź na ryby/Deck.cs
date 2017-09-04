@@ -28,6 +28,25 @@ namespace Gra_idź_na_ryby
             cards = new List<Card>(initalCards);
         }
 
+        public Deck(bool fullDeck)
+        {
+            if (fullDeck)
+            {
+                cards = new List<Card>();
+                for (int i = 0; i <= 3; i++)
+                {
+                    for (int j = 1; j <= 13; j++)
+                    {
+                        cards.Add(new Card((Suits)i, (Values)j));
+                    }
+                }
+            }
+            else
+            {
+                cards = new List<Card>();
+            }
+        }
+
         public int Count => cards.Count;
 
         public void Add(Card card)
@@ -131,6 +150,12 @@ namespace Gra_idź_na_ryby
             }
 
             return result;
+        }
+
+        public void AddDeck(Deck deck)
+        {
+            while (deck.Count > 0)
+                Add(deck.Deal());
         }
     }
 }

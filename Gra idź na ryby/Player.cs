@@ -47,5 +47,31 @@ namespace Gra_idź_na_ryby
             textBox.Text += string.Format("{0} ma {1} {2}", Name, result.Count, Card.PluralValueName(value, result.Count));
             return result;
         }
+
+        public void AskForCard(List<Player> players, int myIndex, Deck stock, Values value)
+        {
+            Deck cardsGatherd = new Deck(false);
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (i == myIndex)
+                    continue;
+                Player player = players[i];
+
+                cardsGatherd.AddDeck(player.DoYouHaveAny(value));
+            }
+
+            if (cardsGatherd.Count > 0)
+                cards.AddDeck(cardsGatherd);
+            else
+            {
+                cards.Add(stock.Deal());
+                textBox.Text += Name + " pobrał" + (Name[Name.Length - 1] == 'a' ? "a" : "") + " kartę z kupki";
+            }
+        }
+
+        public void AskForCard(List<Player> players, int myIndex, Deck stock)
+        {
+            AskForCard(players, myIndex, stock, RandomValue());
+        }
     }
 }
